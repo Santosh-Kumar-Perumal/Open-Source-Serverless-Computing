@@ -1,0 +1,12 @@
+FROM nginx:1.18
+
+ENV MESSAGE=""
+
+COPY ./mynewpage.html /usr/share/nginx/html/index.html
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY entrypoint.sh /
+
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD [ "nginx", "-g", "daemon off;"]
