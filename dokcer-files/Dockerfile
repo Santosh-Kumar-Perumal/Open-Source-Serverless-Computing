@@ -2,7 +2,7 @@ FROM nginx:1.18
 
 ENV MESSAGE=""
 
-COPY ./mynewpage.html /usr/share/nginx/html/index.html
+COPY ./myweb.html /usr/share/nginx/html/index.html
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /
 
