@@ -14,33 +14,13 @@ kubectl create namespace serving
 Install Knative Serving Components ( CRDs and Core Components) [serving-components.yaml](./serving/serving-components.yaml) file
 
 ```
-kubectl apply -f serving/serving-components.yaml
+kubectl apply -f serving-components.yaml
 ```
 
 Check if Knative Serving Core Components are up-and-running
 
 ```
 kubectl get pods -n serving
-```
-
-## 1.2 Set up KNative Eventing Resources
-
-Create the `eventing` namespace
-
-```
-kubectl create namespace eventing
-```
-
-Install Knative Eventing Components ( CRDs and Core Components )  [eventing-components.yaml](./eventing/eventing-components.yaml) file
-
-```
-kubectl apply -f eventing/eventing-components.yaml
-```
-
-Check if Knative Eventing Core Components are up-and-running
-
-```
-kubectl get pods -n eventing
 ```
 
 # Set up Istio
@@ -55,7 +35,7 @@ https://istio.io/latest/docs/setup/getting-started/#download
 Check if the proper version has been installed
 
 ```
-istioctl version
+./istio-1.16.1/bin/istioctl version
 ```
 ## 1.2 Install `Istio`
 
@@ -85,16 +65,19 @@ Create a new file called [knative-service.yaml](./knative-service.yaml)
 Paste in the following text:
 
 ```
-apiVersion: serving.knative.dev/v1 
+apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: serving-app 
-  namespace: default 
+  name: serving-app
+  namespace: default
 spec:
   template:
     spec:
       containers:
-        - image: bsucaciu/knative-serving:v1
+        - image: santhu1039/myapp:0.6
+  traffic:
+    - revisionName: serving-app-00001
+      percent: 100
 ```
 
 Deploy Knative Service
@@ -195,7 +178,7 @@ kubectl get revision
 
 Change the image version
 ```
-        - image: bsucaciu/knative-serving:v2
+        - image: santhu1039/myapp:0.5
 ```
 
 Inspect current revisions
