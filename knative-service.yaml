@@ -7,10 +7,7 @@ spec:
   template:
     spec:
       containers:
-        - image: santhu1039/myapp:0.5
-          env:
-            - name: MESSAGE
-              value: Hello Wipro Cloud Academy
+        - image: santhu1039/myapp:0.6
   traffic:
     - revisionName: serving-app-00001
       percent: 100
