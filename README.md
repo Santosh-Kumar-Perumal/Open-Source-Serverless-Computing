@@ -35,7 +35,7 @@ https://istio.io/latest/docs/setup/getting-started/#download
 Check if the proper version has been installed
 
 ```
-istioctl version
+./istio-1.16.1/bin/istioctl version
 ```
 ## 1.2 Install `Istio`
 
