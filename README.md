@@ -14,7 +14,7 @@ kubectl create namespace serving
 Install Knative Serving Components ( CRDs and Core Components) [serving-components.yaml](./serving/serving-components.yaml) file
 
 ```
-kubectl apply -f serving/serving-components.yaml
+kubectl apply -f serving-components.yaml
 ```
 
 Check if Knative Serving Core Components are up-and-running
