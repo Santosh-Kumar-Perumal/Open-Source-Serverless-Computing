@@ -1,4 +1,4 @@
-FROM nginx:1.22-perl
+FROM nginx:1.18
 
 ENV MESSAGE=""
 
